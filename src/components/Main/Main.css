@@ -1,0 +1,16 @@
+:root{
+    --main-green: #93b65b;
+    --main-green-hover: #779348;
+    --main-gray: #645f5c;
+}
+
+body{
+    background-color: rgb(243, 243, 243);
+}
+
+.userType{
+    color: var(--main-green);
+}
+.subtitle{
+    color: var(--main-gray);
+}

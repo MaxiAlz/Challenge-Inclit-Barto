@@ -1,0 +1,18 @@
+:root {
+    --main-green: #93b65b;
+    --main-green-hover: #779348;
+    --main-gray: #645f5c;
+}
+
+.btnSearch {
+    background-color: var(--main-green);
+}
+
+.btnSearch:hover {
+    background-color: var(--main-green-hover);
+}
+
+.searchInput:focus {
+    border: solid var(--main-green);
+    box-shadow: 2px 1px var(--main-green)
+}

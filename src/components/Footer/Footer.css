@@ -1,0 +1,24 @@
+:root {
+    --main-green: #93b65b;
+    --main-green-hover: #779348;
+    --main-gray: #645f5c;
+}
+
+footer {
+    margin-top: 0;
+}
+
+.footerBasto {
+    background-color: var(--main-green-hover);
+}
+
+.btn-Redes {
+    border: 1px solid white;
+    color: white;
+}
+
+.btn-Redes:hover {
+    border: 1px solid white;
+    background-color: var(--main-gray);
+    color: white;
+}
