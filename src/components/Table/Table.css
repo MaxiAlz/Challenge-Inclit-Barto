@@ -1,0 +1,29 @@
+:root {
+    --main-green: #93b65b;
+    --main-green-hover: #779348;
+    --main-gray: #645f5c;
+}
+
+.table-striped {
+    min-height: 24vh;
+}
+
+.btnEditRegister {
+    background-color: var(--main-green);
+    border: var(--main-green);
+    box-shadow: 2px 1px var(--main-green);
+}
+
+.btnEditRegister:hover {
+    background-color: var(--main-green-hover);
+}
+
+form,
+label {
+    text-decoration: solid;
+}
+
+.inputDecoration:focus {
+    border: solid var(--main-green);
+    box-shadow: 2px var(--main-green);
+}
