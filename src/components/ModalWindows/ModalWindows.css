@@ -22,3 +22,7 @@ form, label{
   border: solid var(--main-green);
   box-shadow: 2px  var(--main-green);
 }
+
+.incorrectData{
+  color: red;
+}

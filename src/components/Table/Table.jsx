@@ -45,7 +45,6 @@ const Table = ({ cows, isLoading, getCows, setCows }) => {
     } catch (error) {
       console.log(error)
     }
-    
   }
 
   const [cowDataToEdit, setcowDataToEdit] = useState({
@@ -65,11 +64,13 @@ const Table = ({ cows, isLoading, getCows, setCows }) => {
   }
 
   const deleteRegister = async (_id) => {
-    await fetch(`http://localhost:8080/cows/${_id}`,{
-      method:'DELETE'
-    })
-    console.log(_id);
-    getCows()
+    if(confirm("¿Estas seguro que desea borrar el registro?")){
+      await fetch(`http://localhost:8080/cows/${_id}`,{
+        method:'DELETE'
+      })
+      console.log(_id);
+      getCows()
+    }
     // console.log(_id)
   }
 
@@ -118,7 +119,7 @@ const Table = ({ cows, isLoading, getCows, setCows }) => {
 
 
       {/* modal screen */}
-      <div className="modal fade" id="editNewRegister" tabindex="-1" aria-labelledby="editNewRegisterLabel" aria-hidden="true" >
+      <div className="modal fade" id="editNewRegister" tabIndex="-1" aria-labelledby="editNewRegisterLabel" aria-hidden="true" >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
