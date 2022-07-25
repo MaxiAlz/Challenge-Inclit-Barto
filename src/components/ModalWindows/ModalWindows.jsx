@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 // import css
 import './ModalWindows.css'
 
@@ -12,7 +12,7 @@ const ModalWindows = ( { cows, isLoading, getCows } ) => {
     "deviceType": "",
     "deviceNumber": ""
   })
-
+  const closeButonRef = useRef(null)
   // form validation states
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -75,6 +75,7 @@ const ModalWindows = ( { cows, isLoading, getCows } ) => {
 
     return errors
   }
+  
   //post method
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -88,11 +89,12 @@ const ModalWindows = ( { cows, isLoading, getCows } ) => {
     .then((response) =>response.json())
     .then( (response) => {
       console.log(response)
+      closeButonRef.current.click()
     })
     .catch(error => console.log(error))
-
-    getCows()
+    
     e.target.reset()
+    getCows()
   }
   return (
     <>
@@ -154,7 +156,7 @@ const ModalWindows = ( { cows, isLoading, getCows } ) => {
                   {errors.deviceNumber && <p className='incorrectData'>{errors.deviceNumber}</p>}
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary inputDecoration" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" className="btn btn-secondary inputDecoration" data-bs-dismiss="modal" ref={closeButonRef}>Cancelar</button>
                   <button type="submit" className="btn btnCreateNewRegister text-white inputDecoration">Guardar Cambios</button>
                 </div>
               </form>

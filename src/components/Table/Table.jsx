@@ -1,19 +1,30 @@
-import React, { useState, useRef,useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 //import css
 import './Table.css'
-const Table = ({ cows, isLoading, getCows, setCows }) => {
+const Table = ({ cows, isLoading, getCows, setCows, }) => {
 
   const [_idRegisterToEdit, set_idRegisterToEdit] = useState("")
   const closeButonRef = useRef(null)
-
+  const [cowDataToEdit, setcowDataToEdit] = useState({
+    "idSenasa": "",
+    "animalType": "",
+    "weight": "",
+    "potreroName": "",
+    "deviceType": "",
+    "deviceNumber": ""
+  })
   useEffect(() => {
-    
+
   }, [])
-  
+
 
   const registerToEdit = (_id) => {
     set_idRegisterToEdit(_id)
     console.log(_id);
+  }
+
+  const ShowDataToEdit = (_id) => {
+    
   }
 
   const editRegister = (e) => {
@@ -45,16 +56,9 @@ const Table = ({ cows, isLoading, getCows, setCows }) => {
     } catch (error) {
       console.log(error)
     }
+    getCows()
   }
 
-  const [cowDataToEdit, setcowDataToEdit] = useState({
-    "idSenasa": "",
-    "animalType": "",
-    "weight": "",
-    "potreroName": "",
-    "deviceType": "",
-    "deviceNumber": ""
-  })
 
   const handleChange = ({ target }) => {
     setcowDataToEdit({
@@ -64,9 +68,9 @@ const Table = ({ cows, isLoading, getCows, setCows }) => {
   }
 
   const deleteRegister = async (_id) => {
-    if(confirm("¿Estas seguro que desea borrar el registro?")){
-      await fetch(`http://localhost:8080/cows/${_id}`,{
-        method:'DELETE'
+    if (confirm("¿Estas seguro que desea borrar el registro?")) {
+      await fetch(`http://localhost:8080/cows/${_id}`, {
+        method: 'DELETE'
       })
       console.log(_id);
       getCows()
@@ -130,7 +134,7 @@ const Table = ({ cows, isLoading, getCows, setCows }) => {
               <form onSubmit={() => editRegister(_idRegisterToEdit)}>
                 <div className="mb-3">
                   <label htmlFor="idSenasa" className="form-label">ID Senasa</label>
-                  <input type="text" name='idSenasa' onChange={handleChange} className="form-control inputDecoration" id="idSenasa" aria-describedby="textHelp" />
+                  <input type="text" name='idSenasa' onChange={handleChange} className="form-control inputDecoration" id="idSenasa" aria-describedby="textHelp"/>
                 </div>
                 <div className="mb-3 ">
                   <label htmlFor="animalType" classNames="form-label inputDecoration">Tipo de Animal</label>
